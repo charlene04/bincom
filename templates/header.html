@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{% load static %}
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>POLLING UNITS</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script
+  src="https://code.jquery.com/jquery-3.6.0.min.js"
+  integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+  crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="{% static 'style.css' %}">
+    </head>
+    <body>
+        
+    <nav class="navbar bg-dark">
+        <p>Navbar</p>
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/stats">LGA Stats</a> </li>
+            <li><a href="/new">New Records</a> </li>
+        </ul>
+    </nav>
+    {% block content %}
+    {% endblock %}
+
+         
+    </body>
+</html>
