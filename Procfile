@@ -1,1 +1,1 @@
-web: gunicorn hackernews.wsgi:application --preload --log-file –
+web: gunicorn bimcom.wsgi:application --preload --log-file –
