@@ -17,7 +17,7 @@
 <script>
     $(document).ready(function(){
         $('input[type=radio]').click(function(){
-            $.ajax(`http://localhost:8000/stats/${this.value}`,
+            $.ajax(`https://bincom-django.herokuapp.com/stats/${this.value}`,
                 {
                     dataType: 'json',
                     success: function(data, status, error){
