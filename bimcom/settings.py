@@ -87,7 +87,7 @@ DATABASES = {
         'NAME': 'bincom',
         'USER': 'root',
         'PASSWORD': 'Charle004/00',
-        'HOST': '34.208.52.234',
+        'HOST': '',
         'PORT': '3306'
     }
 }
