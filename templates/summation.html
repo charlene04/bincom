@@ -1,48 +1,52 @@
-{% extends "header.html" %}
-{% block content%}
+{% extends "header.html" %} {% block content%}
 <section class="container">
-    <h1>Select The LGA To View</h1>
-    <div class="grid-2">
-        <form name="forms">
-            {% for lga in lgas %}
-            <label>{{lga}}({{lga.lga_id}})</label>
-            <input type="radio" value="{{lga.lga_id}}" name="lga"> |
-            {% endfor %}
-        </form>
-        <section class="text-center" id="stats-display">
-
-        </section>
-    </div>
+	<h1>Select The LGA To View</h1>
+	<div class="grid-2">
+		<form name="forms">
+			{% for lga in lgas %}
+			<label>{{lga}}({{lga.lga_id}})</label>
+			<input type="radio" value="{{lga.lga_id}}" name="lga" /> |
+			{% endfor %}
+		</form>
+		<section class="text-center" id="stats-display"></section>
+	</div>
 </section>
 <script>
-    $(document).ready(function(){
-        $('input[type=radio]').click(function(){
-            $.ajax(`https://bincom-django.herokuapp.com/stats/${this.value}`,
-                {
-                    dataType: 'json',
-                    success: function(data, status, error){
-                        // console.log(data)
-                        var stats = ''
-                        $.each(data, function(key, value){
-                            stats += '<h2 class="added">' + key + ': ' + value + '</h2><br/>'
-                        })
-                        var element = document.getElementById('stats-display');
-                        while (element.firstChild){
-                            element.removeChild(element.firstChild)
-                        }
-                        $('#stats-display').append(stats)
-                    },
-                    error: function(xhr, status, error){
-                        console.log("An error occured")
-                    }
-                }
-
-            )
-        })
-    })
+	$(document).ready(function () {
+		$('input[type=radio]').click(function () {
+			$.ajax(
+				`https://bincom-django.herokuapp.com/stats/${this.value}`,
+				{
+					dataType: 'json',
+					success: function (data, status, error) {
+						var stats = '';
+						var element =
+							document.getElementById('stats-display');
+						if (!$.isEmptyObject(data)) {
+							$.each(data, function (key, value) {
+								stats +=
+									'<h2 class="added">' +
+									key +
+									': ' +
+									value +
+									'</h2><br/>';
+							});
+						} else {
+							stats +=
+								'<h2 class="added">No Data In This LGA</h2><br/>';
+						}
+						while (element.firstChild) {
+							element.removeChild(element.firstChild);
+						}
+						$('#stats-display').append(stats);
+					},
+					error: function (xhr, status, error) {
+						console.log('An error occured');
+					},
+				}
+			);
+		});
+	});
 </script>
 
 {% endblock %}
-
-        
-      
